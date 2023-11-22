@@ -13,6 +13,8 @@ function FileUpload() {
       return;
     }
 
+    alert('Uploading csv file and running DNN model')
+
     const formData = new FormData();
     formData.append('file', selectedFile);
 
@@ -28,10 +30,10 @@ function FileUpload() {
 
       const result = await response.json();
       console.log(result);
-      alert('File uploaded successfully!');
+      alert('Model analysis complete!');
     } catch (error) {
       console.error('Upload error:', error);
-      alert('Upload failed!');
+      alert('Upload failed or another error!');
     }
   };
 

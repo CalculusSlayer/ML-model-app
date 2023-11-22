@@ -74,12 +74,23 @@ def run_dnn_model(dataset):
     Y_test_original = scaler_Y.inverse_transform(Y_test)
     Y_pred_original = scaler_Y.inverse_transform(Y_pred)
 
+    train_loss = history.history['loss']
+    validation_loss = history.history['val_loss']
+
     print(f"Y_test_original: {Y_test_original}")
     print(f"Y_pred_original: {Y_pred_original}")
+    print(f"history: {history},\n\
+    history.history: {history.history},\n\
+    train loss: {history.history['loss']},\n\
+    validation loss: {history.history['val_loss']}\n")
 
     # Error report
     mse = mean_squared_error(Y_test_original, Y_pred_original)
     print(f"Mean Squared Error (DNN): {mse}")
+
+    return Y_test_original, Y_pred_original, mse, train_loss, validation_loss
+
+
 
 # Run `python3 dnn.py > dnn_model_output.txt` to test the DNN model
 # separately from the fullstack app and see stdout in a separate text file
