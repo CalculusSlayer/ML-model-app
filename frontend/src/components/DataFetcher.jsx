@@ -3,7 +3,7 @@
 // request to API server to retrive
 // information
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
 function DataFetcher({ url }) {
   const [data, setData] = useState(null);

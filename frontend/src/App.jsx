@@ -1,13 +1,17 @@
-import './App.css';
 import DataFetcher from './components/DataFetcher';
-import UserForm from './components/UserForm';
+import FileUpload from './components/FileUpload';
 
 function App() {
   return (
     <>
-      <h1>HI</h1>
-      <DataFetcher url="http://localhost:8000/" />
-      <UserForm>Fill this out</UserForm>
+      <h1 style={{textAlign: 'center'}}>ECS 171 Group 25 Project</h1>
+      <h3 style={{textAlign: 'center'}}>By Nayeel, Dhilan, Roger, Kyle, Jaasan</h3>
+      <div style={{paddingLeft: '20px', paddingBottom: '10px'}}>
+        <DataFetcher url="http://localhost:8000/"/>
+      </div>
+      <div style={{paddingLeft: '20px', paddingBottom: '10px'}}>
+        <FileUpload />
+      </div>
     </>
   );
 }

@@ -1,7 +1,8 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, File, UploadFile
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
+from fastapi.responses import JSONResponse
 
 app = FastAPI()
 
@@ -61,6 +62,20 @@ def create_user(user: User):
         raise HTTPException(status_code=400, detail="Age must be 18 or above")
 
     return {"message": "User created successfully", "user": user.dict()}
+
+@app.post("/upload-csv")
+async def upload_csv(file: UploadFile = File(...)):
+    if file.content_type != 'text/csv':
+        return JSONResponse(status_code=400, content={"message": "Invalid file type"})
+
+    # Read the contents of the file
+    data = await file.read()
+    
+    # Process the CSV file (e.g., feed to ML model)
+    # ...
+
+    # Respond with a message or result
+    return {"message": "File processed successfully", "data": data}
 
 
 if __name__ == "__main__":
