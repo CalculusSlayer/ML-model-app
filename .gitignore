@@ -2,8 +2,13 @@
 node_modules/
 venv/
 env/
+ecs171/
+
 __pycache__/
 *.pyc
+
+# Not working for some reason
+.DS_Store
 
 # IDE specific files
 .vscode/
@@ -19,8 +24,8 @@ __pycache__/
 *.sqlite
 
 # Operating System generated files
-.DS_Store # macOS
-Thumbs.db # Windows
+.DS_Store
+Thumbs.db
 
 # Production build folder
 /build
@@ -52,3 +57,5 @@ wheels/
 .installed.cfg
 *.egg
 
+# other
+backend/dnn_model_output.txt

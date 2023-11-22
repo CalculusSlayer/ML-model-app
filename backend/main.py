@@ -3,6 +3,8 @@ import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from fastapi.responses import JSONResponse
+import pandas as pd
+from your_ml_module import run_ml_model
 
 app = FastAPI()
 
@@ -69,7 +71,7 @@ async def upload_csv(file: UploadFile = File(...)):
         return JSONResponse(status_code=400, content={"message": "Invalid file type"})
 
     # Read the contents of the file
-    data = await file.read()
+    dataframe = pd.read_csv(file.file)
     
     # Process the CSV file (e.g., feed to ML model)
     # ...
