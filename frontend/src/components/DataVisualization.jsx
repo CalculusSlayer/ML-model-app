@@ -6,6 +6,28 @@ function DataVisualization(props) {
 
   if (!props.data) return <p>Loading...</p>;
 
+  const commonOptions = {
+    plugins: {
+      tooltip: {
+        callbacks: {
+          title: function(tooltipItems) {
+            // Return the label for the x-axis
+            return `Day: ${tooltipItems[0].label}`;
+          },
+          label: function(tooltipItem) {
+            // Return the label for the y-axis
+            let label = tooltipItem.dataset.label || '';
+            if (label) {
+              label += ': ';
+            }
+            label += tooltipItem.parsed.y;
+            return label;
+          }
+        }
+      },
+    }
+  };
+  
   // Rest of the component
   // Prepare data for the first chart
 const yTestYpredData = {
@@ -27,6 +49,7 @@ const yTestYpredData = {
   };
 
   const yTestYpredOptions = {
+    ...commonOptions,
     scales: {
       x: {
         title: {
@@ -63,6 +86,7 @@ const yTestYpredData = {
   };
 
   const lossOptions = {
+    ...commonOptions,
     scales: {
       x: {
         title: {
@@ -91,7 +115,8 @@ const yTestYpredData = {
         <Line data={lossData} options={lossOptions}/>
       </div>
   
-      <p>MSE: {props.data.mse}</p>
+      <p><strong>MSE: </strong><em>{props.data.mse ? props.data.mse.toFixed(4) : 'N/A'}</em></p>
+
     </div>
   );  
 }
