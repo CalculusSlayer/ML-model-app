@@ -34,13 +34,13 @@ const yTestYpredData = {
     labels: Array.from({ length: props.data.Y_test.length }, (_, i) => i + 1),
     datasets: [
       {
-        label: 'Y_test',
+        label: 'Actual close value',
         data: props.data.Y_test,
         borderColor: 'red',
         backgroundColor: 'rgba(255, 0, 0, 0.5)',
       },
       {
-        label: 'Y_pred',
+        label: 'Predicted close value',
         data: props.data.Y_pred,
         borderColor: 'blue',
         backgroundColor: 'rgba(0, 0, 255, 0.5)',
@@ -71,7 +71,7 @@ const yTestYpredData = {
     labels: Array.from({ length: props.data['train loss'].length }, (_, i) => i + 1),
     datasets: [
       {
-        label: 'Train Loss',
+        label: 'Training Loss',
         data: props.data['train loss'],
         borderColor: 'green',
         backgroundColor: 'rgba(0, 255, 0, 0.5)',
@@ -105,12 +105,12 @@ const yTestYpredData = {
 
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-      <h2>Y_test vs Y_pred</h2>
+      <h2>Actual close value vs. Predicted close value</h2>
       <div style={{ width: '1200px', height: '600px' }}>
         <Line data={yTestYpredData} options={yTestYpredOptions}/>
       </div>
   
-      <h2>Training and Validation Loss</h2>
+      <h2>Training Loss vs. Validation Loss</h2>
       <div style={{ width: '1000px', height: '500px' }}>
         <Line data={lossData} options={lossOptions}/>
       </div>

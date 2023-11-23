@@ -5,7 +5,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #D6EAF8 
+  /*Change BG color but but for now keep white */
+  background-color: white
 }
 
 code {
