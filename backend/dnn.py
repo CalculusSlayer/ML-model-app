@@ -14,7 +14,7 @@ from tensorflow.keras.optimizers import Adam
 def run_dnn_model(dataset):
     # Initialize "global" variables
     # and helper functions
-    learning_rate_default = 1e-5
+    learning_rate_default = 1e-4
 
     # Initialize number of hidden layers
     hidden_layers = 11
@@ -77,12 +77,12 @@ def run_dnn_model(dataset):
     train_loss = history.history['loss']
     validation_loss = history.history['val_loss']
 
-    print(f"Y_test_original: {Y_test_original}")
-    print(f"Y_pred_original: {Y_pred_original}")
-    print(f"history: {history},\n\
-    history.history: {history.history},\n\
-    train loss: {history.history['loss']},\n\
-    validation loss: {history.history['val_loss']}\n")
+    # print(f"Y_test_original: {Y_test_original}")
+    # print(f"Y_pred_original: {Y_pred_original}")
+    # print(f"history: {history},\n\
+    # history.history: {history.history},\n\
+    # train loss: {history.history['loss']},\n\
+    # validation loss: {history.history['val_loss']}\n")
 
     # Error report
     mse = mean_squared_error(Y_test_original, Y_pred_original)

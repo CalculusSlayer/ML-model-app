@@ -19,11 +19,6 @@ app.add_middleware(
     allow_headers=["*"],  # Allows all headers
 )
 
-# Run "curl http://localhost:8000" in terminal to test
-@app.get("/") # route decorator
-def read_root():
-    return {"message": "Hello from FastAPI"}
-
 @app.post("/upload-csv")
 async def upload_csv(file: UploadFile = File(...)):
     if file.content_type != 'text/csv':

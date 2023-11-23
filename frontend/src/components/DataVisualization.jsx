@@ -25,6 +25,23 @@ const yTestYpredData = {
       }
     ],
   };
+
+  const yTestYpredOptions = {
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: 'Day'
+        }
+      },
+      y: {
+        title: {
+          display: true,
+          text: 'Close Value (INR)'
+        }
+      }
+    }
+  };  
   
   // Prepare data for the second chart
   const lossData = {
@@ -45,25 +62,38 @@ const yTestYpredData = {
     ],
   };
 
+  const lossOptions = {
+    scales: {
+      x: {
+        title: {
+          display: true,
+          text: 'Epoch'
+        }
+      },
+      y: {
+        title: {
+          display: true,
+          text: 'Loss'
+        }
+      }
+    }
+  };  
+
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
       <h2>Y_test vs Y_pred</h2>
       <div style={{ width: '1200px', height: '600px' }}>
-        <Line data={yTestYpredData} />
+        <Line data={yTestYpredData} options={yTestYpredOptions}/>
       </div>
   
       <h2>Training and Validation Loss</h2>
       <div style={{ width: '1000px', height: '500px' }}>
-        <Line data={lossData} />
+        <Line data={lossData} options={lossOptions}/>
       </div>
   
       <p>MSE: {props.data.mse}</p>
     </div>
-  );
-  
-  
-  
-  
+  );  
 }
 
 export default DataVisualization;
