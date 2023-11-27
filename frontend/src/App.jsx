@@ -7,21 +7,18 @@ import { useState, useEffect } from 'react';
 function App() {
   const [modelData, setModelData] = useState(null);
 
-  // TODO: might need below
-  // const handleFileChange = (event) => {
-  //   setSelectedFile(event.target.files[0]);
-  // };
-
-  const handleFileUpload = async (selectedFile) => {
+  const handleFileUpload = async (selectedFile, selectedModel) => {
     if (!selectedFile) {
       alert('Please select a file first!');
       return;   
     }
 
-    alert('Uploading csv file and running DNN model')
+    const alertMessage = `Uploading file: ${selectedFile.name}\nRunning model: ${selectedModel.toUpperCase()}`;
+    alert(alertMessage);
 
     const formData = new FormData();
     formData.append('file', selectedFile);
+    formData.append('model', selectedModel);  // Add the model to the formData
 
     try {
       const response = await fetch('http://localhost:8000/upload-csv', {

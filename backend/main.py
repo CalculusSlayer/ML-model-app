@@ -1,9 +1,11 @@
-from fastapi import FastAPI, File, UploadFile
+from fastapi import FastAPI, File, UploadFile, Form
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 import pandas as pd
 from dnn import run_dnn_model
+from perceptron import run_perceptron_model
+from ann import run_ann_model
 
 app = FastAPI()
 
@@ -20,7 +22,7 @@ app.add_middleware(
 )
 
 @app.post("/upload-csv")
-async def upload_csv(file: UploadFile = File(...)):
+async def upload_csv(file: UploadFile = File(...), model: str = Form(...)):
     if file.content_type != 'text/csv':
         return JSONResponse(status_code=400, content={"message": "Invalid file type"})
 
@@ -35,8 +37,18 @@ async def upload_csv(file: UploadFile = File(...)):
                         "Last", "VWAP", "Prev Close"]
     cleaned_dataset = dataset.drop(dropped_features, axis=1)
 
-    # run ML model
-    Y_test_original, Y_pred_original, mse, train_loss, validation_loss = run_dnn_model(cleaned_dataset)
+    # run selected ML model
+        # Choose and run ML model based on user selection
+    if model == 'dnn':
+        result = run_dnn_model(cleaned_dataset)
+    elif model == 'perceptron':
+        result = run_perceptron_model(cleaned_dataset)
+    elif model == 'ann':
+        result = run_ann_model(cleaned_dataset)
+    else:
+        return JSONResponse(status_code=400, content={"message": "Invalid model selected"})
+
+    Y_test_original, Y_pred_original, mse, train_loss, validation_loss = result
 
     # Convert numpy arrays to lists for JSON serialization
     Y_test_list = Y_test_original.flatten().tolist()

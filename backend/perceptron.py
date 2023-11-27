@@ -1,5 +1,5 @@
-# dnn.py
-# This file runs our 11 layer DNN model
+# perceptron.py
+# This file runs our perceptron model
 
 # Import necessary libraries
 import numpy as np
@@ -11,14 +11,12 @@ from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
 from tensorflow.keras.optimizers import Adam
 
-def run_dnn_model(dataset):
+def run_perceptron_model(dataset):
     # Initialize "global" variables
     # and helper functions
     learning_rate_default = 1e-4
 
-    # Initialize number of hidden layers
-    hidden_layers = 11
-    print(f"{'~'*15} Building DNN model with {hidden_layers} hidden layers{'~'*15}\n")
+    print(f"{'~'*15} Building Perceptron model {'~'*15}\n")
 
     # SETTING THE TARGET VARIABLE (Y) AND SELECTING THE FEATURES (X):
     X = dataset.drop('Close', axis=1).values
@@ -33,25 +31,11 @@ def run_dnn_model(dataset):
     # Creating a Training Set and a Test Set for Stock Market Prediction:
     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.2, random_state=42, shuffle=False)
 
-    # Building DNN model with 11 hidden layers
+    # Building perceptron
     model = Sequential()
 
-    # Input layer
-    # Input layer will have same number of neurons as number of feature variables
-    model.add(Dense(64, input_dim=X_train.shape[1], activation='tanh'))
-
-    # Hidden layers
-    # Play around with number of neurons in each hidden layer.
-    # Too many neurons leads to overcomplexity, not enough means too simple
-    # Tanh activation function here is used b/c it is recommended to use
-    # when there are more hidden layers.
-    for _ in range(hidden_layers-1):
-        model.add(Dense(128, activation='tanh'))
-        model.add(Dropout(0.1)) # This helps with preventing overfitting
-
-    # Output layer
-    # Output layer will have 1 neuron b/c there's only 1 target variable
-    model.add(Dense(1))
+    # No hidden layers
+    model.add(Dense(1, input_dim=X_train.shape[1], activation='tanh'))
 
     # Changing learning rate here with Adam's optimization.
     # Learning rate is static at the moment, but we can explore
