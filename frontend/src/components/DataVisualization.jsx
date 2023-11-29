@@ -115,7 +115,8 @@ const yTestYpredData = {
         <Line data={lossData} options={lossOptions}/>
       </div>
   
-      <p style={{fontSize: '20px'}}><strong>MSE: </strong><em>{props.data.mse ? props.data.mse.toFixed(4) : 'N/A'}</em></p>
+      <p style={{fontSize: '20px', marginBottom: '10px'}}><strong>MSE: </strong><em>{props.data.mse ? props.data.mse.toFixed(4) : 'N/A'}</em></p>
+      <p style={{fontSize: '20px', marginTop: '0px'}}><strong>R2: </strong><em>{props.data.mse ? props.data.r2.toFixed(4) : 'N/A'}</em></p>
 
     </div>
   );  

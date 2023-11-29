@@ -3,9 +3,7 @@ import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 import pandas as pd
-from dnn import run_dnn_model
-from perceptron import run_perceptron_model
-from ann import run_ann_model
+from models import run_perceptron_model, run_ann_model, run_dnn_model
 
 app = FastAPI()
 
@@ -48,7 +46,7 @@ async def upload_csv(file: UploadFile = File(...), model: str = Form(...)):
     else:
         return JSONResponse(status_code=400, content={"message": "Invalid model selected"})
 
-    Y_test_original, Y_pred_original, mse, train_loss, validation_loss = result
+    Y_test_original, Y_pred_original, mse, train_loss, validation_loss, r2 = result
 
     # Convert numpy arrays to lists for JSON serialization
     Y_test_list = Y_test_original.flatten().tolist()
@@ -63,7 +61,8 @@ async def upload_csv(file: UploadFile = File(...), model: str = Form(...)):
         "Y_test": Y_test_list,
         "Y_pred": Y_pred_list,
         "train loss": train_loss,
-        "validation loss": validation_loss
+        "validation loss": validation_loss,
+        "r2": r2
     }
 
 
