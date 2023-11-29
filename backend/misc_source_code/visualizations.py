@@ -54,6 +54,7 @@ def dnn_visual():
 
     ax.set_aspect('equal', adjustable='box')
     ax.set_axis_off()
+    plt.savefig('dnn_visual.png', dpi=300)
     plt.show()
 
 
@@ -84,6 +85,7 @@ def ann_visual():
 
     ax.set_aspect('equal', adjustable='box')
     ax.set_axis_off()
+    plt.savefig('ann_visual.png', dpi=300)
     plt.show()
 
 
@@ -100,6 +102,7 @@ def perceptron_visual():
 
     ax.set_aspect('equal', adjustable='box')
     ax.set_axis_off()
+    plt.savefig('perceptron_visual.png', dpi=300)
     plt.show()
 
 def main():
