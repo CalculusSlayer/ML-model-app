@@ -1,5 +1,6 @@
-# perceptron.py
-# This file runs our perceptron model
+# models.py
+# This is a library with all our models: perceptron, ann, and dnn
+# This file is not meant to be run as a script.
 
 # Import necessary libraries
 import numpy as np
@@ -246,18 +247,3 @@ def run_dnn_model(dataset):
     # print(f"r2 float = {type(float(r2))}")
 
     return Y_test_original, Y_pred_original, mse, train_loss, validation_loss, r2
-
-
-# Run `python3 dnn.py > dnn_model_output.txt` to test the DNN model
-# separately from the fullstack app and see stdout in a separate text file
-if __name__ == '__main__':
-    # Load the dataset
-    coalindia_dataset = pd.read_csv("Datasets/COALINDIA.csv")
-
-    # Initialize list of dropped features
-    dropped_features = ['Date', 'Symbol',
-                        'Series', 'Trades', 'Turnover',
-                        'Deliverable Volume', '%Deliverble',
-                        'Last', 'VWAP', 'Prev Close']
-    cleaned_coalindia_dataset = coalindia_dataset.drop(dropped_features, axis=1)
-    run_perceptron_model(cleaned_coalindia_dataset)
