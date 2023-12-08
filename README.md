@@ -5,6 +5,8 @@ Email Nayeel at *naimtiaz@ucdavis.edu* for any problems regarding setup, running
 
 ## Set up Instructions
 
+0) It is recommended to have relatively newer versions of React, ***NPM***, and Python before proceeding to avoid set up problems, especially NPM.
+
 1) Navigate to root directory `/ML-model-app`
 
 2) Run `python -m venv ecs171` to create virtual environment
@@ -56,7 +58,9 @@ in the root directory
 
 ***frontend*** - Folder with all the frontend related files
 
-***misc_source_code*** - Folder with other scripts related to our project but not our fullstack app such as a pairplots generator script and neural networks visualizer script
+***misc_source_code*** - Folder with other scripts related to our project but not our fullstack app such as a pairplots generator script and neural networks visualizer script. All .py files/scripts in this folder should be runnable by running `python {name of .py file}`. Ex: `python visualizations.py`
+
+***jupyter_files*** - Folder with pre-production jupyter files that were used to aid the creation of our optimized ML models. These files include a heat map and grid search (note these .ipynb files are not meant to be run here but rather have their outputs observed since they were not refactored to run in this environment).
 
 ***requirements.txt*** - Contains all the python modules needed to run the backend server and other miscellaneous scripts in misc_source_code
 
@@ -88,4 +92,3 @@ in the root directory
 
 ***src/components*** - Folder containing different components such as `DataVisualization.jsx` and `FileUpload.jsx`
 
-***src/com
