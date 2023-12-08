@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 
 def main():
     try:
-        df = pd.read_csv("../Datasets/COALINDIA.csv")
+        df = pd.read_csv("../backend/Datasets/COALINDIA.csv")
         plot = sns.pairplot(df)
         plt.savefig('pairplot.png')
     except Exception as e:
