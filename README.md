@@ -60,7 +60,7 @@ in the root directory
 
 ***misc_source_code*** - Folder with other scripts related to our project but not our fullstack app such as a pairplots generator script and neural networks visualizer script. All .py files/scripts in this folder should be runnable by running `python {name of .py file}`. Ex: `python visualizations.py`
 
-***jupyter_files*** - Folder with pre-production jupyter files that were used to aid the creation of our optimized ML models. These files include a heat map and grid search (note these .ipynb files should be run on a jupyter notebook, not via python).
+***jupyter_files*** - Folder with pre-production jupyter files that were used to aid the creation of our optimized ML models. These files include a heat map and grid search (note these .ipynb files should be run on a jupyter notebook, not via python). Running grid search jupyter file takes around 8-10 hours as for DNN we test 2916 hyperparameters (6-7 hours), for ANN we test 972 parameters (1 hour), and for Perceptron we test 144 parameters (5-10 min).
 
 ***requirements.txt*** - Contains all the python modules needed to run the backend server and other miscellaneous scripts in misc_source_code
 
