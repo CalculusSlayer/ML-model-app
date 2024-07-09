@@ -48,8 +48,8 @@ function App() {
 
   return (
     <>
-      <h1 style={{textAlign: 'center'}}>ECS 171 Group 25 Project</h1>
-      <h3 style={{textAlign: 'center'}}>By Nayeel, Dhilan, Roger, Kyle, Jassan</h3>
+      <h1 style={{textAlign: 'center'}}>Stock Market Price Predictor</h1>
+      <h3 style={{textAlign: 'center'}}>By Nayeel Imtiaz</h3>
       {/* <div style={{paddingLeft: '20px', paddingBottom: '10px'}}>
         <DataFetcher url="http://localhost:8000/"/>
       </div> */}

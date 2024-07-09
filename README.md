@@ -18,7 +18,7 @@ in the root directory
     
     4a) Ensure your vitual environment is on
     
-    4b) Then run `pip install -r requirements.txt` from the root directory `/ML-model-app` to install python dependencies for the `backend` and other scripts in `misc_source_code`
+    4b) Then run `pip install -r requirements.txt` (OR `pip install -r requirements_no_version.txt`) from the root directory `/ML-model-app` to install python dependencies for the `backend` and other scripts in `misc_source_code`
 
 5) Frontend setup:
     
